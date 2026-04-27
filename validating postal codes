@@ -1,0 +1,13 @@
+import re
+
+# Range check: 100000 to 999999
+regex_integer_in_range = r"^[1-9]\d{5}$"
+
+# Alternating repetitive digit pair: x followed by any char, then x again
+regex_alternating_repetitive_digit_pair = r"(\d)(?=\d\1)"
+
+# Testing logic (similar to the platform's locked stub)
+P = input()
+
+print (bool(re.match(regex_integer_in_range, P)) 
+and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
