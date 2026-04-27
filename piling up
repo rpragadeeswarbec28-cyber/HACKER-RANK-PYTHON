@@ -1,0 +1,28 @@
+from collections import deque
+
+def solve():
+    t = int(input())
+    
+    for _ in range(t):
+        n = int(input())
+        dq = deque(map(int, input().split()))
+        
+        last_picked = float('inf')
+        possible = True
+        
+        while dq:
+            if dq[0] >= dq[-1]:
+                current = dq.popleft()
+            else:
+                current = dq.popright() if hasattr(dq, 'popright') else dq.pop()
+            
+            if current > last_picked:
+                possible = False
+                break
+            
+            last_picked = current
+            
+        print("Yes" if possible else "No")
+
+if __name__ == '__main__':
+    solve()
